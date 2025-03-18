@@ -1,0 +1,58 @@
+hashing
+    can you tell the frequency of 1 in the array
+    by brute force O(q*n) is the time complexity to calculate the frequency of those elements in the array
+
+which is not desirable
+    thus we think of something better
+    what is hashing? prstoring and fetching
+        i will create a hash/frequcny array
+        i will doo some precalculaion
+    we could haveva max welements of say t, bt it can be till 1e9
+    can we declare a such a large vector of size 1e9+1
+    no you cannot
+    array can be 1e6 max for integer
+    but if declared globally 1e7 can be allcated to the array
+
+
+we have done number hashing
+can we do character hashing? ?
+    q queries
+it can be done using ASCII values
+
+on character hashing there is no problem about the size of vectpr declared since the number
+of possible characters is kess than 256 onlyy
+
+to deal with the sie issue in case if number hashing
+we introduce the concept of unorderd_set<int,int> map in c++ STL and hashmao in java collcection framework
+
+simply use it like in main3.cpp
+
+map stores all the  values in the sorted order
+
+map can also be used in string hashing 
+
+both storung and fetching takes logn in the maps in every case best worst and avg case
+
+but in unorderd maps it takes o(1) since there is no need to mantain any order 
+avg and best time is o(1) for the unorderd maps
+inn wordst case = o(n) where n i s number of elements in the map (unordered) in case of once in a blue moon
+
+why does this worst case happen ?
+    INTERNAL COLLISIONs
+HASHING =>  1.division method
+            2. folding method
+            3. mid square method
+
+DIVISION METHOD  => 2, 5, 16, 26, 139 do hasging without creazting a array of szie > 10 (restriction)
+    ->division method comes in 
+    arr[2]%10 => 2
+    arr[5]%10 => 5
+    arr[16]%10 => 6
+
+what if on moduo they are same numbers => do linear chainnig (done using linked list) in sorted order => collision factor
+
+we need to understand thre concept;
+
+WHAT IS COLLSION  ? 
+    given an array 18, 28,38, 48
+    all the numbers as a long chain in same ahsh place2 => worst case => o(n) happens

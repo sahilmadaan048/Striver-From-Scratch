@@ -1,0 +1,3 @@
+https://takeuforward.org/c/vector-in-c-stl/
+
+//refer to this link for the whole article

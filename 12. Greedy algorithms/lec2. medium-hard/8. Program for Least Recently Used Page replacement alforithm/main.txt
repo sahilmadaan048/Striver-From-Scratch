@@ -1,0 +1,116 @@
+
+### 📘 Problem Statement: LRU Page Replacement
+
+In operating systems that use demand paging, a **page replacement algorithm** decides which memory page to swap out when a new page needs to be loaded into memory but all frames are full.
+
+The **Least Recently Used (LRU)** page replacement algorithm removes the page that hasn’t been used for the longest time. Your task is to simulate the LRU page replacement algorithm.
+
+#### 🧾 Input:
+
+* A sequence of page references (integers).
+* The number of available frames (capacity of memory).
+
+#### 🎯 Output:
+
+* The number of **page faults**.
+* The state of memory frames after each reference (optional for clarity).
+
+---
+
+### ✅ Example
+
+**Input:**
+
+```
+Pages: 7 0 1 2 0 3 0 4
+Frames: 3
+```
+
+**Output:**
+
+```
+Page Faults: 6
+```
+
+---
+
+### 💡 LRU Page Replacement Logic:
+
+* If the page is already in memory (hit): do nothing.
+* If not in memory (miss/page fault):
+
+  * If memory is full: remove the **least recently used** page.
+  * Add the new page.
+* Track page faults.
+
+---
+
+### 🧾 Code (C++):
+
+```cpp
+#include <iostream>
+#include <unordered_set>
+#include <unordered_map>
+#include <list>
+#include <vector>
+
+using namespace std;
+
+int LRU_Page_Replacement(vector<int>& pages, int capacity) {
+    unordered_set<int> memory;  // Set to store current pages
+    unordered_map<int, list<int>::iterator> page_map;  // Map page to its position in list
+    list<int> lru_list;  // Doubly linked list for LRU order
+    int page_faults = 0;
+
+    for (int page : pages) {
+        // Page Hit
+        if (memory.find(page) != memory.end()) {
+            // Move the accessed page to front (most recently used)
+            lru_list.erase(page_map[page]);
+            lru_list.push_front(page);
+            page_map[page] = lru_list.begin();
+        }
+        // Page Miss
+        else {
+            page_faults++;
+
+            // If memory is full, remove LRU page
+            if (memory.size() == capacity) {
+                int lru_page = lru_list.back();
+                lru_list.pop_back();
+                memory.erase(lru_page);
+                page_map.erase(lru_page);
+            }
+
+            // Insert new page
+            lru_list.push_front(page);
+            memory.insert(page);
+            page_map[page] = lru_list.begin();
+        }
+    }
+
+    return page_faults;
+}
+
+int main() {
+    vector<int> pages = {7, 0, 1, 2, 0, 3, 0, 4};
+    int frames = 3;
+
+    int faults = LRU_Page_Replacement(pages, frames);
+
+    cout << "Total Page Faults: " << faults << endl;
+
+    return 0;
+}
+```
+
+---
+
+### 🧪 Output:
+
+```
+Total Page Faults: 6
+```
+
+---
+

@@ -80,3 +80,12 @@ int main()
          << cnt << endl;
     return 0;
 }
+
+
+/*
+Time Complexity: O(N*logN), where N = size of the given array.
+Reason: We are not changing the merge sort algorithm except by adding a variable to it. So, the time complexity is as same as the merge sort.
+
+Space Complexity: O(N), as in the merge sort We use a temporary array to store elements in sorted order.
+
+*/

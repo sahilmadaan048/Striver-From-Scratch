@@ -94,7 +94,7 @@ public:
                 node = node->get(word[i]); 
                 flag = flag & node->isEnd(); 
             }
-            else {
+            else {  
                 return false; 
             } 
         }

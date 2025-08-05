@@ -1,0 +1,12 @@
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp: In function 'Node* insertBeforeValue(Node*, int, int)':
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp:92:2: error: expected ';' before '}' token
+  }
+  ^
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp: In function 'Node* deleteWithValue(Node*, int)':
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp:144:3: error: 'cnt' was not declared in this scope
+   cnt++;
+   ^~~
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp: In function 'Node* insertTail(Node*, int)':
+D:\Code_Everyday\WebDev PROJECTS\Striver-From-Scratch\6. Linked List\lec1. learn 1D linked list\3. Deleting a node in ll\main3.cpp:170:8: error: 'class Node' has no member named 'nexr'; did you mean 'next'?
+  temp->nexr = newNode;
+        ^~~~

@@ -1,8 +1,8 @@
-// https://takeuforward.org/data-structure/delete-last-node-of-linked-list/
+ // https://takeuforward.org/data-structure/delete-last-node-of-linked-list/
 
 // https://leetcode.com/problems/delete-node-in-a-linked-list/description/
 
-#include <Bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 
 class Node {

@@ -24,6 +24,16 @@ void printLL(Node* head) {
         head = head->next;
     }
 }
+
+Node* removeHead(Node* head) {
+    if(head == nullptr) return NULL;
+
+    Node* temp = head;
+    head = head->next;
+    delete temp;
+    return head; 
+}
+
 Node* deleteTail(Node* head) {
     if (head == NULL || head->next == NULL)
         return NULL;
@@ -35,6 +45,7 @@ Node* deleteTail(Node* head) {
     temp->next = nullptr;
     return head;
 }
+
 int main() {
     vector<int> arr = {12, 5, 8, 7};
     Node* head = new Node(arr[0]);
@@ -43,6 +54,12 @@ int main() {
     head->next->next->next = new Node(arr[3]);
     head = deleteTail(head);
     printLL(head);
+
+    // remmove head
+    head = removeHead(head);
+
+    printLL(head);
+
 }
 
 /*

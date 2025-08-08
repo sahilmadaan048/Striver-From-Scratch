@@ -1,4 +1,5 @@
 // https://takeuforward.org/linked-list/search-an-element-in-a-linked-list
+// https://www.youtube.com/watch?v=Nq7ok-OyEpg
 
 #include <bits/stdc++.h>
 using namespace std; 

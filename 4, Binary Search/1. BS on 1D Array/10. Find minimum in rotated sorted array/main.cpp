@@ -11,7 +11,7 @@ public:
             int mid = (low + high) / 2;
 
             //if left part is 
-            sorted:
+            // sorted:
             if (arr[low] <= arr[mid]) {
                 // keep the minimum:
                 ans = min(ans, arr[low]);

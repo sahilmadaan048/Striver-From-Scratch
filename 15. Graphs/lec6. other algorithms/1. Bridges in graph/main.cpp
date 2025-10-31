@@ -41,4 +41,4 @@ public:
         dfs(0, -1, vis, adj, tin, low, bridges);
         return bridges;
     }
-};
+};  

@@ -1,38 +1,45 @@
-// https://leetcode.com/problems/house-robber/description/
-
-// https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/
+// https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/
 
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-public:
-    int maximumNonAdjacentSum(vector<int>& arr) {
-        int n = arr.size();
+int solveUtil(int n, vector<int>& height, vector<int>& dp, int k) {
+    dp[0] = 0;
+    for (int i = 1; i < n; i++) {
+        int mmSteps = INT_MAX;
 
-        if (n == 1) return arr[0];
-
-        vector<int> dp(n);
-
-        dp[0] = arr[0];
-        dp[1] = max(arr[0], arr[1]);
-
-        for (int i = 2; i < n; i++) {
-            dp[i] = max(arr[i] + dp[i - 2], dp[i - 1]);
+        for (int j = 1; j <= k; j++) {
+            if (i - j >= 0) {
+                int jump = dp[i - j] + abs(height[i] - height[i - j]);
+                mmSteps = min(jump, mmSteps);
+            }
         }
-
-        return dp[n - 1];
+        dp[i] = mmSteps;
     }
-};
-
-int main() {
-    vector<int> arr = {2, 1, 4, 9};
-    Solution obj;
-    cout << obj.maximumNonAdjacentSum(arr);
-    return 0;
+    return dp[n - 1]; 
 }
 
+int solve(int n, vector<int>& height, int k) {
+    vector<int> dp(n, -1); 
+    return solveUtil(n, height, dp, k);
+}
+
+int main() {
+    vector<int> height{30, 10, 60, 10, 60, 50};
+    int n = height.size();
+    int k = 2;
+    vector<int> dp(n, -1);
+    cout << solve(n, height, k) << endl;
+    return 0;
+}
 /*
-Time Complexity: O(N), every element of array is processed once.
-Space Complexity: O(N), extra space used to store DP array.
+
+Time Complexity: O(N*K)
+
+Reason: We are running two nested loops, where outer loops run from 1 to n-1 and the inner loop runs from 1 to K
+
+Space Complexity: O(N)
+
+Reason: We are using an external array of size ‘n’’.
+
 */

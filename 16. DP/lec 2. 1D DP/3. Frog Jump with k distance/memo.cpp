@@ -1,53 +1,56 @@
-// https://leetcode.com/problems/house-robber/description/
-
-// https://takeuforward.org/data-structure/maximum-sum-of-non-adjacent-elements-dp-5/
+// https://takeuforward.org/data-structure/dynamic-programming-frog-jump-with-k-distances-dp-4/
 
 #include <bits/stdc++.h>
 using namespace std;
 
-class Solution {
-    int solve(vector<int> &arr, int i, vector<int> &dp)
+int solveUtil(int ind, vector<int> &height, vector<int> &dp, int k)
+{
+    if (ind == 0)
     {
-
-        if (i < 0)
-            return 0;
-
-        if (i == 0)
-            return arr[0];
-
-        if (dp[i] != -1)
-            return dp[i];
-
-        int pick = arr[i] + solve(arr, i - 2, dp);
-
-        int notPick = solve(arr, i - 1, dp);
-
-        return dp[i] = max(pick, notPick);
+        return 0;
     }
 
-    int maximumNonAdjacentSum(vector<int> &arr)
+    if (dp[ind] != -1)
+        return dp[ind];
+
+    int mini = INT_MAX;
+
+    for (int j = 1; j <= k; j++)
     {
-        int n = arr.size();
-
-        // DP array initialized with -1
-        vector<int> dp(n, -1);
-
-        // Start solving from last index
-        return solve(arr, n - 1, dp);
+        if (ind - j >= 0)
+        {
+            int jump = solveUtil(ind - j, height, dp, k) + abs(height[ind] - height[ind - j]);
+            mini = min(mini, jump);
+        }
     }
-};
+
+    return dp[ind] = mini;
+}
+
+int solve(int n, vector<int> &height, int k)
+{
+    vector<int> dp(n, -1);
+    return solveUtil(n - 1, height, dp, k);
+}
 
 int main()
 {
-    vector<int> arr = {2, 1, 4, 9};
-    Solution obj;
-
-    // Output the result
-    cout << obj.maximumNonAdjacentSum(arr);
+    vector<int> height{30, 10, 60, 10, 60, 50};
+    int n = height.size();
+    int k = 2;
+    vector<int> dp(n, -1);
+    cout << solve(n, height, k) << endl;
     return 0;
 }
 
 /*
-Time Complexity: O(N), where N = total no. of elements in array. The overlapping subproblems will return the answer in constant time O(1).
-Space Complexity: O(N+N), extra space used for memoization and auxiliary stack space.
+
+Time Complexity: O(N *K)
+
+Reason: The overlapping subproblems will return the answer in constant time. Therefore the total number of new subproblems we solve is ‘n’. At every new subproblem, we are running another loop for K times. Hence total time complexity is O(N * K).
+
+Space Complexity: O(N)
+
+Reason: We are using a recursion stack space(O(N)) and an array (again O(N)). Therefore total space complexity will be O(N) + O(N) ≈ O(N)
+
 */

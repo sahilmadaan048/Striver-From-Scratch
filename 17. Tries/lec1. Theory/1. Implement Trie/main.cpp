@@ -2,6 +2,9 @@
 
 // https://leetcode.com/problems/implement-trie-prefix-tree/description/
 
+#include <bits/stdc++.h>
+using namespace std;
+
 struct Node {
     Node * links[26];
 
@@ -33,7 +36,6 @@ class Trie {
     Node* root;
 public:
     Trie() {
-    
         root = new Node();
     }
     
@@ -74,6 +76,10 @@ public:
         return true;
     }
 };
+
+int main() {
+    
+}
 
 /**
  * Your Trie object will be instantiated and called as such:

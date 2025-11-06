@@ -52,11 +52,12 @@ long long maxSubarraySum(int arr[], int n) {
     for (int i = ansStart; i <= ansEnd; i++) {
         cout << arr[i] << " ";
     }
-    cout << "]n";
+    cout << "\n";
 
     // To consider the sum of the empty subarray
     // uncomment the following check:
 
+    maxi = max(0, maxi);
     //if (maxi < 0) maxi = 0;
 
     return maxi;

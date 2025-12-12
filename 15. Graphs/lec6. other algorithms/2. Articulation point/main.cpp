@@ -22,6 +22,7 @@ it will be an articulation point if and inly if
 #include <bits/stdc++.h>
 using namespace std;
 
+
 int n;
 vector<vector<int>> adj;
 

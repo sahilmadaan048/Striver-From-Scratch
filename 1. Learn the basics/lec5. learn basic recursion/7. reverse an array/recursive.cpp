@@ -22,3 +22,9 @@ int main() {
    printArray(arr, n);
    return 0;
 }
+
+// TC - O(n) - n / 2 recursive calls to be exact
+// SC - O(n) - stack space
+
+
+// https://www.geeksforgeeks.org/dsa/reverse-an-array-using-recursion/

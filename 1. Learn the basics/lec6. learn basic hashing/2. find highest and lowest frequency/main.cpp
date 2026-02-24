@@ -25,8 +25,8 @@ void Frequency(int arr[], int n)
         }
     }
 
-    cout << "The highest frequency element is: " << maxEle << "\n";
-    cout << "The lowest frequency element is: " << minEle << "\n";
+    cout << "The highest frequency element is: " << maxEle << " with frequency: " << maxFreq << "\n";
+    cout << "The lowest frequency element is: " << minEle << " with frequency: " << minFreq <<"\n";
 }
 
 int main()

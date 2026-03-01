@@ -45,19 +45,19 @@ class Solution {
     }
 public:
     bool isBalanced(TreeNode* root) {
-        // if (root == nullptr) return true;
+        if (root == nullptr) return true;
 
-        // int leftHeight = maxDepth(root->left);
-        // int rightHeight = maxDepth(root->right);
+        int leftHeight = maxDepth(root->left);
+        int rightHeight = maxDepth(root->right);
 
-        // if (abs(leftHeight - rightHeight) <= 1 &&
-        //     isBalanced(root->left) &&
-        //     isBalanced(root->right)) {
-        //     return true;
-        // }
+        if (abs(leftHeight - rightHeight) <= 1 &&
+            isBalanced(root->left) &&
+            isBalanced(root->right)) {
+            return true;
+        }
 
  
-        // return false;
+        return false;
  
         return dfsHeight(root) != -1;
     }

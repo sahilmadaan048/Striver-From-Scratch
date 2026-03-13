@@ -58,7 +58,7 @@ public:
                 visited.insert(node->left);
                 q.push({node->left, dist + 1});
             }
-            if(node->right && !visited.count(node->right)) {
+            if(node->right && !visited.count(   node->right)) {
                 visited.insert(node->right);
                 q.push({node->right, dist + 1});
             }

@@ -78,16 +78,15 @@ public:
     void inorderTraversal(TreeNode *root)
     {
         if (root == nullptr)
-            {
-                return;
-            }
+        {
+            return;
+        }
         inorderTraversal(root->left);
         cout << root->val << " ";
         inorderTraversal(root->right);
 
         return;
     }
-
 };
 
 int main()
@@ -109,11 +108,11 @@ int main()
     cout << "Binary Tree before modification: ";
     sol.inorderTraversal(root);
     cout << endl;
-    
+
     // Call the changeTree function
     // to modify the binary tree
     sol.changeTree(root);
-    
+
     // Print the inorder traversal
     // after modification
     cout << "Binary Tree after Children Sum Property: ";

@@ -1,5 +1,7 @@
 // https://leetcode.com/problems/insert-into-a-binary-search-tree/description/
 
+// https://takeuforward.org/binary-search-tree/insert-a-given-node-in-binary-search-tree
+
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -41,3 +43,11 @@ public:
     }
 };
 
+
+/*
+
+Complexity Analysis
+Time Complexity: O(H), where H is the height of the BST. In the worst case (unbalanced tree), it could be O(n).
+Space Complexity: O(H), additional space used for recursion stack.
+
+*/

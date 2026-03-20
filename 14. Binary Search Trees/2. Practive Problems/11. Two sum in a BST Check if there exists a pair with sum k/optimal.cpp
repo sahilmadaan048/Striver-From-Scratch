@@ -15,69 +15,85 @@ struct TreeNode {
 };
 
 
-class BSTIterator {
-    private: 
-    stack<TreeNode*> myStack;
-    bool reverse; // whether we are moving forward (inorder) or backward (reverse inorder)
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
 
-    public: 
-    BSTIterator(TreeNode* root, bool isReverse) : reverse(isReverse) {
+class BSTIterator {
+    stack<TreeNode*> st;
+    bool reverse;
+
+public:
+    BSTIterator(TreeNode* root, bool isReverse) {
+        reverse = isReverse;
         pushAll(root);
     }
 
+    void pushAll(TreeNode* node) {
+        while (node) {
+            st.push(node);
+            if (reverse) {
+                node = node->right;   // for reverse inorder
+            } else {
+                node = node->left;    // for normal inorder
+            }
+        }
+    }
+
     int next() {
-        TreeNode* tempNode = myStack.top();
-        myStack.pop();
+        TreeNode* temp = st.top();
+        st.pop();
 
-        if(!reverse) {
-            pushAll(tempNode->right);
-        }
-        else {
-            pushAll(tempNode->left);
+        if (reverse) {
+            pushAll(temp->left);
+        } else {
+            pushAll(temp->right);
         }
 
-        return tempNode->val;
+        return temp->val;
     }
 
     bool hasNext() {
-        return !myStack.empty();
-    }
-
-    void pushAll(TreeNode* node) {
-        while(node) {
-            myStack.push(node);
-
-            if(reverse) {
-                node = node->left;
-            }
-            else {
-                node = node->right;
-            }
-        }
+        return !st.empty();
     }
 };
 
-
 class Solution {
-    public: 
+public:
     bool findTarget(TreeNode* root, int k) {
-        if(!root) return;
+        if (!root) return false;
 
-        BSTIterator l(root, false);
-        BSTIterator r(root, true);
-
+        BSTIterator l(root, false); // inorder (smallest first)
+        BSTIterator r(root, true);  // reverse inorder (largest first)
 
         int i = l.next();
         int j = r.next();
 
         while (i < j) {
-            if(i + j == k) return true;
-            else if(i + j < k) i = i.next;
-            else  {
-                j = r.next();
+            if (i + j == k) {
+                return true;
+            } 
+            else if (i + j < k) {
+                if (l.hasNext())
+                    i = l.next();
+                else
+                    break;
+            } 
+            else {
+                if (r.hasNext())
+                    j = r.next();
+                else
+                    break;
             }
         }
-
         return false;
     }
 };

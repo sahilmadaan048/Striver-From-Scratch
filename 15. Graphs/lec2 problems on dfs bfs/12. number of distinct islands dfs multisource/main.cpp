@@ -46,3 +46,13 @@ public:
         return st.size();
     }
 };
+
+
+/*
+Complexity Analysis
+
+Time Complexity: O(N*M), DFS traversal and marking visited cells dominate.
+
+Space Complexity: O(N*M), or visited grid and set storing unique island shapes.
+
+*/

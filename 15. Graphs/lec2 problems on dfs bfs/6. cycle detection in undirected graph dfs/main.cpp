@@ -64,3 +64,14 @@ int main() {
 
     return 0;
 }
+
+/*
+Complexity Analysis
+
+Time Complexity: O(V+E), we build the adjacency list and explore all the edges and visit all the 
+vertices once during DFS traversal.
+
+Space Complexity: O(V+E), additonal space is used to store adjacency list, visited array and recursive call stack for DFS traversal.
+
+
+*/

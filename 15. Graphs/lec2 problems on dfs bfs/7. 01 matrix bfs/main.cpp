@@ -35,3 +35,14 @@ public:
         return d;
     }
 };
+
+
+/*
+
+complexity analysis =>
+
+time => o(n *m + n * m * 4) => the bfs function will be called for n x m nodes a d for every node, we are traversing the 4 neighbours
+
+space complexity => o(n x m) + o(n x m) + o(n x m) , for the visited arat, distance matriux and queue space => each taking n x m
+
+*/

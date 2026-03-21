@@ -25,7 +25,7 @@ class Solution {
                 }
             }
     
-            //now we have converted the adj matrix into adjj list
+            //now we ;have converted the adj matrix into adjj list
             vector<int> vis(size,0);
             int count = 0 ;
             for(int i=0;i<size;i++){
@@ -37,3 +37,14 @@ class Solution {
             return count;
     }
 };
+
+
+/*
+
+complexity analysis 
+
+time => o(v+e) each vertex is visited exactly once and each edge is processed a most twice
+
+space => o(v + e) => to build the adjacency list
+
+*/

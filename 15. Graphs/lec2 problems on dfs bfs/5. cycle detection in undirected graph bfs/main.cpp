@@ -31,6 +31,7 @@ class Solution {
       // there's no cycle
       return false; 
   }
+
   public:
     // Function to detect cycle in an undirected graph.
     bool isCycle(int V, vector<int> adj[]) {
@@ -46,7 +47,7 @@ class Solution {
 };
 
 int main() {
-    
+
     // V = 4, E = 2
     vector<int> adj[4] = {{}, {2}, {1, 3}, {2}};
     Solution obj;
@@ -57,3 +58,12 @@ int main() {
         cout << "0\n";
     return 0;
 }
+
+
+/*
+complexity analysis 
+
+time => O(N + 2E) where Nodes, 2E is for the total degrees as we traverse all adjacent nodes in the case of connected components of a graph, it will take another o(N) time
+
+space => O(N) + O(N) = O(N) space for queue dat astructure and visited array
+*/

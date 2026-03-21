@@ -39,3 +39,12 @@ public:
         return ans;        
     }
 };
+
+/*
+Complexity
+
+Time complexity: O(m * n) — Each pixel is visited at most once.
+
+Space complexity: O(m * n) — For the visited matrix and queue in BFS.
+
+*/

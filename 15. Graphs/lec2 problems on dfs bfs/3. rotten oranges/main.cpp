@@ -55,3 +55,17 @@ class Solution {
             return tm;
         }
     };
+
+/*
+
+complexity analysis => 
+
+time => o(n*n*4) in the worst case, every cell in the grid may contain an orange, and for each rotten orange we explore 4 directions
+    - so we iterate through the cells n*n and oerform 4 operarions per oranfe, hence the complexity becomes
+        - o(n*n*4) which simplifies to o(n^2)
+
+space =>  o(n x n) => in the worst case, all the oranges might be rotten and will be stored on te queue siultaneously. the maximum size of the queue can be equa to the total
+    number of oranges in the grid *n x n
+    therefore the space complexity is o(n^2)
+*/
+

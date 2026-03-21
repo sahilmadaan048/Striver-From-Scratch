@@ -39,3 +39,13 @@ class Solution {
         }
     };
     
+
+/*
+complexity analysis
+
+time  -> o(v + e) we visist every node and for every node we visit all of its neighbours in ths dfs travesal
+
+space => o(n) for storing visited array and auciallary stck space
+     = number of nodes in the graph
+
+*/

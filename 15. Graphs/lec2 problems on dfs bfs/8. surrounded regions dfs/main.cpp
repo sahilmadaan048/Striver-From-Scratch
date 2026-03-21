@@ -1,53 +1,58 @@
 // https://leetcode.com/problems/surrounded-regions/
 
-class Solution 
-{
+class Solution {
 public:
-    int R, C;
-    vector<vector<int>> visited;
+    void dfs(vector<vector<char>>& board, int row, int col) {
 
-    void dfs(int r, int c, vector<vector<char>>& board) {
-        if(r < 0 or r > R-1 or c < 0 or c > C-1) return;
+        board[row][col] = 'N';
 
-        if(board[r][c] == 'X') return;
+        int r[] = {0, -1, 0, 1};
+        int c[] = {-1, 0, 1, 0};
 
-        if(visited[r][c]) return;
+        for (int i = 0; i < 4; i++) {
+            int nrow = row + r[i];
+            int ncol = col + c[i];
 
-        
-        visited[r][c]=1;
-        dfs(r+1 , c , board);
-        dfs(r-1 , c, board);
-        dfs(r ,c+1 , board);
-        dfs(r , c-1 , board);
-
+            if (nrow >= 0 && nrow < board.size() && ncol >= 0 &&
+                ncol < board[0].size() && board[nrow][ncol] == 'O') {
+                dfs(board, nrow, ncol);
+            }
+        }
     }
 
     void solve(vector<vector<char>>& board) {
-        int m = board.size();
-        int n = board[0].size();
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[0].size(); j++) {
 
-        vector<vector<int>> vis(m, vector<int>(n, 0));
+                if (i == 0 || i == board.size() - 1 || j == 0 ||
+                    j == board[0].size() - 1) {
 
-        R = m;
-        C = n;
-        visited = vis;
-
-        for(int i=0; i<m; i++) {
-            for(int j=0; j<n; j++) {
-                if(i == 0 or i == m-1 or j == n-1 or j == 0 and board[i][j] == 'O') {
-                    dfs(i, j, board);
+                    if (board[i][j] == 'O') {
+                        dfs(board, i, j);
+                    }
                 }
             }
         }
 
-        for(int i=0; i<m; i++) {
-            for(int j=0; j<n; j++) {
-                if(visited[i][j] == 0) {
+        for (int i = 0; i < board.size(); i++) {
+            for (int j = 0; j < board[0].size(); j++) {
+
+                if (board[i][j] == 'O') {
                     board[i][j] = 'X';
+                } else if (board[i][j] == 'N') {
+                    board[i][j] = 'O';
                 }
             }
         }
-
-        return;
     }
 };
+
+/*
+
+Complexity Analysis
+
+Time Complexity: O(N × M), since each cell is visited at most once during DFS and once during the final traversal.
+
+Space Complexity: O(N × M), due to the visited matrix and the recursion stack in the worst case.
+
+*/

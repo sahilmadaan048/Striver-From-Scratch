@@ -44,3 +44,16 @@ public:
         return count == numCourses;
     }
 };
+
+
+
+/*
+Complexity analysis => 
+
+Time complexity: ( O(V + E) )
+    We visit each node and edge once.
+
+Space complexity: ( O(V + E) )
+    For the adjacency list, in-degree array, and queue.
+
+*/

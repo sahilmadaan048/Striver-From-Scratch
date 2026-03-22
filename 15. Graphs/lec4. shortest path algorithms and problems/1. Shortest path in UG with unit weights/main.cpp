@@ -70,6 +70,7 @@ int main()
 
     return 0;
 }
+
 // Output:
 
 // 0 1 2 1 2 3 3 4 4
